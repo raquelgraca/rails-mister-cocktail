@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'json'
 require 'open-uri'
+require 'faker'
 
 puts 'Cleaning database'
 Ingredient.destroy_all
@@ -19,5 +20,10 @@ ing = JSON.parse(ingredient_list)
 ing['drinks'].each do |i|
   Ingredient.create(name: i['strIngredient1'])
 end
-
 puts 'Ingredients created!'
+
+25.times do
+  Ingredient.create!(name: Faker::Food.spice)
+end
+
+puts 'some spices!'

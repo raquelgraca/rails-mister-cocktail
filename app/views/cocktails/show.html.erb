@@ -1,13 +1,16 @@
-<h1>Cocktail details</h1>
+<div class="banner h-100" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dxvk3qixb/image/upload/v1582312170/6qwQrL5bCirRdMpAxJ7BN22b.jpg);">
+    <h1 class="text-white"><%= @cocktail.name %></h1>
+</div>
 
-<h2><%= @cocktail.name %></h2>
+  <div class="doses-list d-flex m-3 p-3">
   <div class="card">
-    <h3>Ingredients</h3>
+    <h5 class="card-header">Ingredients</h5>
+    <div class="card-body">
     <% @cocktail.doses.each do |dose| %>
-      <p><%= "#{dose.description} #{dose.ingredient.name}"%> <%= link_to "(Delete)", dose_path(dose), method: 'DELETE'%></p>
+      <p class="card-text d-flex-inline"><%= "#{dose.description} #{dose.ingredient.name}" %>
+      <span class="badge badge-pill"><%= link_to 'delete', dose_path(dose), method: 'DELETE'%></span></p>
     <% end %>
+    </div>
+  <button class="m-6"><%= link_to "Add a new dose", new_cocktail_dose_path(@cocktail) %></button>
   </div>
-<br>
-<button><%= link_to "Add a new dose", new_cocktail_dose_path(@cocktail) %></button>
-<br>
-<button><%= link_to "Back to Cocktails list", cocktails_path %></button>
+  </div>

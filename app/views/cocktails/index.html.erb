@@ -1,14 +1,15 @@
-<h1>Cocktails</h1>
-
-<br>
-<%= link_to "New Cocktail", new_cocktail_path %>
-<br>
-
-  <% @cocktails.each do |cocktail| %>
-<div class="card d-flex flex-nowrap m-3" style="width: 14rem;">
-  <img class= "" src="https://a.wattpad.com/useravatar/MonaDalak.256.116601.jpg" class="card-img-top" alt="gin alecrim">
-  <div class="card-body">
-    <p class="card-text"><%= link_to cocktail.name, cocktail_path(cocktail) %></p>
-  </div>
+<div class="text-white text-center">
+  <h1>Gintonia</h1>
+   <p>Discover the Gin world!</p>
 </div>
+
+<div class="card-columns">
+  <% @cocktails.each do |cocktail| %>
+    <div class="card">
+      <%= cl_image_tag cocktail.photo.key, width:100 , height: 150, crop: :fill %>
+      <div class="card-info bg-white">
+        <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+      </div>
+    </div>
   <% end %>
+</div>
