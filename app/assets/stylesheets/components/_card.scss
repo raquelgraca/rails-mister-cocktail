@@ -1,0 +1,10 @@
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 3;
+    margin: 60px;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 4;
+    margin: 60px;
+  }
+}
